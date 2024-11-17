@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 
 import view.MainView;
 import view.QuanLyCayTrong;
+import view.QuanLyTrangTrai;
 import view.QuanLyVatNuoi;
 import view.TrangChu;
 
@@ -27,8 +28,8 @@ public class MainController {
 		    public void actionPerformed(ActionEvent e) {		                       
 		    	// Hiển thị TrangChu trên plPage
 		        view.getPlPage().removeAll();
-		        TrangChu trangChuPanel = new TrangChu(); // Tạo instance của TrangChu
-		        view.getPlPage().add(trangChuPanel); // Thêm TrangChu vào plPage
+		        TrangChu trangChuPanel = new TrangChu(); 
+		        view.getPlPage().add(trangChuPanel); 
 		        view.getPlPage().revalidate();
 		        view.getPlPage().repaint();
 		    			    	
@@ -65,6 +66,13 @@ public class MainController {
 		        view.getLblTitlePage().setText(buttonText);
 		        
 		        // ... (Các xử lý khác của nút Quản lý)
+		        
+		        //mặc định mở trang trại
+		        view.getPlPage().removeAll();
+		        QuanLyTrangTrai qlTrangTrai = new QuanLyTrangTrai(); 
+		        view.getPlPage().add(qlTrangTrai); 
+		        view.getPlPage().revalidate();
+		        view.getPlPage().repaint();
 		    }
 		});
 		
@@ -77,7 +85,7 @@ public class MainController {
 				// Thêm MouseListener cho toàn bộ frame
 				view.addMouseListener(new MouseAdapter() {
 				    @Override
-				    public void mousePressed(MouseEvent e) { // Sử dụng mousePressed()
+				    public void mousePressed(MouseEvent e) {
 				        // Kiểm tra xem click có nằm ngoài vùng btnNewButton_1 và plVachNgan2 không
 				        if (!view.getBtnQuanLy().getBounds().contains(e.getPoint()) && 
 				            !view.getPlVachNgan2().getBounds().contains(e.getPoint())) {
@@ -95,8 +103,8 @@ public class MainController {
 				    	
 				    	// Hiển thị QuanLyVatNuoi trên plPage
 				        view.getPlPage().removeAll();
-				        QuanLyVatNuoi qlVatNuoi = new QuanLyVatNuoi(); // Tạo instance của TrangChu
-				        view.getPlPage().add(qlVatNuoi); // Thêm TrangChu vào plPage
+				        QuanLyVatNuoi qlVatNuoi = new QuanLyVatNuoi(); 
+				        view.getPlPage().add(qlVatNuoi); 
 				        view.getPlPage().revalidate();
 				        view.getPlPage().repaint();
 				        
@@ -115,8 +123,8 @@ public class MainController {
 				    	
 				    	// Hiển thị QuanLyCayTrong trên plPage
 				        view.getPlPage().removeAll();
-				        QuanLyCayTrong qlCayTrong = new QuanLyCayTrong(); // Tạo instance của TrangChu
-				        view.getPlPage().add(qlCayTrong); // Thêm TrangChu vào plPage
+				        QuanLyCayTrong qlCayTrong = new QuanLyCayTrong(); 
+				        view.getPlPage().add(qlCayTrong); 
 				        view.getPlPage().revalidate();
 				        view.getPlPage().repaint();
 				        
@@ -134,7 +142,13 @@ public class MainController {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// ... (Các xử lý khác của nút TrangTrai)
-
+						
+						view.getPlPage().removeAll();
+				        QuanLyTrangTrai qlTrangTrai = new QuanLyTrangTrai(); 
+				        view.getPlPage().add(qlTrangTrai); 
+				        view.getPlPage().revalidate();
+				        view.getPlPage().repaint();
+				        
 				        // Lấy text của nút TrangTrai
 				        String buttonText = view.getBtnTrangTrai().getText();
 				        // Đặt text cho titlePage
