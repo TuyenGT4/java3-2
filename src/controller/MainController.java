@@ -6,7 +6,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import view.LoginForm;
 import view.MainView;
+import view.Profile;
 import view.QuanLyCayTrong;
 import view.QuanLyTrangTrai;
 import view.QuanLyVatNuoi;
@@ -208,5 +210,47 @@ public class MainController {
 		});
 		
 // xử lý sự kiện panel user
+		view.getPlUser().addMouseListener(new MouseAdapter() {            public void mouseClicked(MouseEvent e) {
+                view.getPopupMenu().show(e.getComponent(), e.getX(), e.getY());
+            }
+        });
+		
+		view.getLblAvata().addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                view.getPopupMenu().show(e.getComponent(), e.getX(), e.getY());
+            }
+        });
+		
+		view.getLblUserName().addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                view.getPopupMenu().show(e.getComponent(), e.getX(), e.getY());
+            }
+        });
+
+// xử lý sự kiện profile
+		view.getMiProfile().addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	view.getPlPage().removeAll();
+		        Profile profile = new Profile(); 
+		        view.getPlPage().add(profile); 
+		        view.getPlPage().revalidate();
+		        view.getPlPage().repaint();
+		    }
+		});
+		
+// xử lý sự kiện đăng xuất
+		view.getMiDangXuat().addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        // Ẩn giao diện chính
+		    	view.dispose();
+		        
+
+		        // Hiển thị giao diện đăng nhập
+		        LoginForm loginView = new LoginForm();
+		        loginView.setVisible(true);
+		    }
+		});
 	}
 }

@@ -15,6 +15,11 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.EmptyBorder;
 
 import controller.MainController;
+import javax.swing.JPopupMenu;
+import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JMenuItem;
 
 public class MainView extends JFrame {
 
@@ -25,6 +30,24 @@ public class MainView extends JFrame {
 	private boolean isPanelVisible = false;
 	private JPanel plMain, plAboveMain, plPage;
 	private JLabel lblTitlePage, lblAvata, lblUserName;	
+	private JPopupMenu popupMenu;
+	private JMenuItem miProfile, miDangXuat;
+	public JMenuItem getMiProfile() {
+		return miProfile;
+	}
+
+	public void setMiProfile(JMenuItem miProfile) {
+		this.miProfile = miProfile;
+	}
+
+	public JMenuItem getMiDangXuat() {
+		return miDangXuat;
+	}
+
+	public void setMiDangXuat(JMenuItem miDangXuat) {
+		this.miDangXuat = miDangXuat;
+	}
+
 	/**
 	 * Launch the application.
 	 */
@@ -176,6 +199,15 @@ public class MainView extends JFrame {
 		lblAvata.setBounds(0, 0, 59, 59);
 		plUser.add(lblAvata);
 		
+		 popupMenu = new JPopupMenu();
+		 addPopup(lblAvata, popupMenu);
+		 
+		  miProfile = new JMenuItem("Hồ sơ cá nhân");
+		  popupMenu.add(miProfile);
+		  
+		   miDangXuat = new JMenuItem("Đăng xuất");
+		   popupMenu.add(miDangXuat);
+		
 		
 		plAboveMain.setLayout(gl_plAboveMain);
 		getContentPane().setLayout(null);
@@ -193,6 +225,30 @@ public class MainView extends JFrame {
 		MainController controller = new MainController(this);
 		
 	}
+	public JPopupMenu getPopupMenu() {
+		return popupMenu;
+	}
+
+	public void setPopupMenu(JPopupMenu popupMenu) {
+		this.popupMenu = popupMenu;
+	}
+
+	public JPanel getPlUser() {
+		return plUser;
+	}
+
+	public void setPlUser(JPanel plUser) {
+		this.plUser = plUser;
+	}
+
+	public void setLblTitlePage(JLabel lblTitlePage) {
+		this.lblTitlePage = lblTitlePage;
+	}
+
+	public void setLblAvata(JLabel lblAvata) {
+		this.lblAvata = lblAvata;
+	}
+
 	public JButton getBtnTrangChu() {
 		return this.btnTrangChu;
 	}
@@ -245,6 +301,23 @@ public class MainView extends JFrame {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	private static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		});
 	}
 	}
 

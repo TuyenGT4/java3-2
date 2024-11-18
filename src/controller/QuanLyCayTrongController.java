@@ -10,16 +10,7 @@ public class QuanLyCayTrongController {
 
     public QuanLyCayTrongController(QuanLyCayTrong view) {
         this.view = view;
-/*
-        view.getTfGiaChamNuoi().setEnabled(enabledText);
-    	view.getTfMaCayTrong().setEnabled(enabledText);
-    	view.getTfMaTrangTrai().setEnabled(enabledText);
-    	view.getTfSLCayTrong().setEnabled(enabledText);
-    	view.getTfSLThuDuoc().setEnabled(enabledText);
-    	view.getTfTenCayTrong().setEnabled(enabledText);
-    	view.getTfTenTrangTrai().setEnabled(enabledText);
-    	view.getTfTinhTrangSucKhoe().setEnabled(enabledText);
-*/    	
+  	
         setEnabledTextField();
 //xử lý sự kiện nút thêm
         view.getBtnThem().addActionListener(new ActionListener() {
